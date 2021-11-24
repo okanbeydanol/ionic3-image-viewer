@@ -1,6 +1,6 @@
 {
   "name": "ionic3-image-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ionic 3 component providing a image viewer",
   "main": "./dist/es2015/public-api.js",
   "typings": "./dist/es2015/public-api.d.ts",

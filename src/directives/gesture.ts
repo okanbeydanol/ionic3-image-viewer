@@ -51,10 +51,10 @@ export class CoreGestureService {
     this.busy = true;
     let hammerController: HammerController = await this.checkHammerController(hammer, element);
     hammerController.hammerManagerInfo = await this.addManagerType(hammer, hammerController.hammerManagerInfo, element);
-    this.busy = false;
     this.startListeners(hammerController, hammer.type, (data) => {
       callback(data);
     });
+    this.busy = false;
   }
   private startListeners(hammerController: HammerController, hammerType: HammerType, callback: Function) {
     if (hammerType) {
@@ -100,7 +100,15 @@ export class CoreGestureService {
   async mcDestroy(hammer: HammerCallback) {
     if (hammer !== null && hammer !== undefined) {
       const hammerController = await this.getHammerController(hammer.transitionElements.key);
-      console.log(hammerController);
+      if (hammerController) {
+        hammerController.hammerManagerInfo.forEach(managerInfo => {
+          managerInfo.manager.destroy();
+        });
+        const findIndex = this.hammerController.findIndex(o => o.key === hammer.transitionElements.key);
+        if (findIndex !== -1) {
+          this.hammerController.splice(findIndex, 1);
+        }
+      }
     }
   }
 

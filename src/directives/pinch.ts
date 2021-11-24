@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, ElementRef, OnInit, Input } from '@angular/core';
 import { CoreGestureService } from "./gesture";
 import { HammerBuilder, HammerType, Events, HammerCallback } from "../public-api";
 import { CoreGestureTransitionService } from './gesture-transitions';
@@ -12,10 +12,10 @@ import { CoreGestureTransitionService } from './gesture-transitions';
 export class CorePinchDirective implements OnInit {
 
   @Input() transitionactive: boolean;
-  @Output() pinchChange: EventEmitter<any>;
+
+  private hammer: HammerCallback = null;
 
   constructor(private el: ElementRef, private gestureService: CoreGestureService, private transitionService: CoreGestureTransitionService) {
-    this.pinchChange = new EventEmitter();
   }
 
   /**
@@ -32,7 +32,6 @@ export class CorePinchDirective implements OnInit {
       if (this.transitionactive) {
         this.transitionService.pinchTransition(hammer);
       }
-      this.pinchChange.emit(hammer);
     });
     console.log('Pinch Directive Works', this.transitionactive);
   }

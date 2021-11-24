@@ -2,18 +2,19 @@
   background: #1e1e1e;
 }
 
-
 ion-content .scroll-content {
-  margin-top:0px !important;
+  margin-top: 0px !important;
 }
-ion-content{
-  button{
+
+ion-content {
+  button {
     background: transparent;
     position: absolute;
-    color:white;
+    color: white;
     z-index: 2;
   }
 }
+
 .pinch-zoom-container {
   position: relative;
   height: 100%;
@@ -24,6 +25,7 @@ ion-content{
   text-align: center;
   background: black;
 }
+
 .pinch-zoom-image {
   width: 100%;
   transform: translate(0px, 0px);

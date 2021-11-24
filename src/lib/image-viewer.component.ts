@@ -14,17 +14,17 @@ export class ImageViewerComponent implements OnInit {
   @Input('gestureEvents') gestureEvents = ['pan', 'pinch', 'doubletap'];
 
   safeUrl: any;
-  constructor(private domSanitizer: DomSanitizer, private modalCtrl: ModalController) {}
+  constructor(private domSanitizer: DomSanitizer, private modalCtrl: ModalController) { }
   ngOnInit(): void {
   }
   getSanitizeUrl() {
-    return this.domSanitizer.sanitize(SecurityContext.RESOURCE_URL, this.domSanitizer.bypassSecurityTrustResourceUrl(this.url));
+    return this.domSanitizer.bypassSecurityTrustUrl(this.url)
   }
 
   async openImage() {
     const modal = await this.modalCtrl.create(
       ImageModalComponent,
-      { media: this.url, gestureEvents: this.gesturesActive ? this.gestureEvents : [] }
+      { media: this.url  }
     );
     await modal.present();
   }

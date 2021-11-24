@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HammerCallback, TransitionElements } from './../public-api';
+import { HammerCallback, TransitionElements } from '../public-api';
 
 /**
  * trasitions to add hammerjs all event.
@@ -9,7 +9,6 @@ import { HammerCallback, TransitionElements } from './../public-api';
 @Injectable()
 export class CoreGestureTransitionService {
   panTransition(hammer: HammerCallback) {
-    console.log(hammer.data.type);
     const transitionElement = hammer.transitionElements;
     hammer.transitionElements.originalSize.width = hammer.transitionElements.element.offsetWidth;
     hammer.transitionElements.originalSize.height = hammer.transitionElements.element.offsetHeight;
@@ -33,11 +32,8 @@ export class CoreGestureTransitionService {
     }
   }
   pinchTransition(hammer: HammerCallback) {
-    console.log(hammer.data.type);
 
     const transitionElement = hammer.transitionElements;
-    console.log('type:', hammer.type);
-    console.log('transitionElement:', transitionElement);
     hammer.transitionElements.originalSize.width = hammer.transitionElements.element.offsetWidth;
     hammer.transitionElements.originalSize.height = hammer.transitionElements.element.offsetHeight;
     if (hammer.data.type === 'pinchstart') {
@@ -61,7 +57,6 @@ export class CoreGestureTransitionService {
       }
   }
   doubletapTransition(hammer: HammerCallback) {
-    console.log(hammer.data.type);
     const transitionElement = hammer.transitionElements;
     if (transitionElement.currentState.zooming === false) {
       transitionElement.currentState.zooming = true;
@@ -83,6 +78,7 @@ export class CoreGestureTransitionService {
     transitionElement.lastEvent = 'doubletap';
     this.update(transitionElement);
   }
+
   private update(transitionElement: TransitionElements) {
     if (isNaN(transitionElement.currentState.x)) {
       transitionElement.currentState.x = 0;
@@ -96,6 +92,7 @@ export class CoreGestureTransitionService {
       transitionElement.currentState.z = 0;
       transitionElement.lastState.z = 0;
     }
+  
     transitionElement.element.style.transform = "translate3d(" + transitionElement.currentState.x + "px, " + transitionElement.currentState.y + "px, 0) scale(" + transitionElement.currentState.z + ")";
   }
   private getRelativePosition(element, point, originalSize, scale) {

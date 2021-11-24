@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": false,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "sourceMap": true,
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "outDir": "./dist/es2015"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "files": [
+    "src/public-api.ts",
+    "src/lib/image-viewer.component.ts",
+    "src/lib/image-viewer.module.ts",
+    "src/lib/image-viewer.service.ts",
+    "src/directives/directives.module.ts",
+    "src/lib/image/image-modal.component.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true
+  },
+}

@@ -159,7 +159,7 @@ export class CoreGestureService {
     const event = events ? events.join(' ').toString() : this.eventsPan.join(' ').toString();
     const findManagerIndex = hammerManagerInfo.findIndex(o => o.type === 'pan');
     if (findManagerIndex !== -1) {
-      hammerManagerInfo[findManagerIndex].manager.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+      hammerManagerInfo[findManagerIndex].manager.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL }));
       hammerManagerInfo[findManagerIndex].manager.on(event, (data: HammerData) => {
         callback(data);
       });
@@ -170,7 +170,7 @@ export class CoreGestureService {
     const event = events ? events.join(' ').toString() : this.eventsPress.join(' ').toString();
     const findManagerIndex = hammerManagerInfo.findIndex(o => o.type === 'press');
     if (findManagerIndex !== -1) {
-      hammerManagerInfo[findManagerIndex].manager.get('press').set();
+      hammerManagerInfo[findManagerIndex].manager.add(new Hammer.Press());
       hammerManagerInfo[findManagerIndex].manager.on(event, (data: HammerData) => {
         callback(data);
       });
@@ -199,7 +199,7 @@ export class CoreGestureService {
     const event = events ? events.join(' ').toString() : this.eventsSwipe.join(' ').toString();
     const findManagerIndex = hammerManagerInfo.findIndex(o => o.type === 'swipe');
     if (findManagerIndex != -1) {
-      hammerManagerInfo[findManagerIndex].manager.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+      hammerManagerInfo[findManagerIndex].manager.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_ALL }));
       hammerManagerInfo[findManagerIndex].manager.on(event, (data) => {
         callback(data);
       });

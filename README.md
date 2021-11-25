@@ -1,6 +1,8 @@
 # ionic3-image-viewer
 A simple international telephone number input. Allows you to create a phone number field with country dropdown. 
 
+![Plugin preview](https://raw.githubusercontent.com/okanbeydanol/ionic3-image-viewer/master/demoApp/video/image-viewer.gif)
+
 
 ## Installation
 
